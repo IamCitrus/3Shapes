@@ -9,19 +9,8 @@ using TMPro;
 public class Shape : MonoBehaviour
 {
     public TextMeshProUGUI shapeText;
-    protected bool isTriggered = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    [SerializeField] protected bool isTriggered = false;
+    
     private void OnMouseDown()
     {
         isTriggered = true;
@@ -31,7 +20,20 @@ public class Shape : MonoBehaviour
     {
         if (isTriggered)
         {
-            shapeText.SetText("You clicked on the shape");
+            shapeText.text = "You clicked on the shape";
+            StartCoroutine(TimerCoroutine());
         }
+    }
+
+    private void Update()
+    {
+        DisplayText();
+    }
+    protected virtual IEnumerator TimerCoroutine()
+    {
+
+        yield return new WaitForSeconds(1f);
+
+        shapeText.text = " ";
     }
 }

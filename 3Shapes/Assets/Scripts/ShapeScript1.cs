@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShapeScript1 : MonoBehaviour
+public class ShapeScript1 : Shape
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void DisplayText()
     {
-        
+        base.DisplayText();
+        if (isTriggered)
+        {
+            shapeText.text = null;
+            shapeText.text = "You clicked on the 1 shape";
+            StartCoroutine(Timer());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        DisplayText();
+    }
+
+    IEnumerator Timer()
+    { 
+        yield return new WaitForSeconds(1f);
+        shapeText.text = null;
+        shapeText.gameObject.SetActive(false);
     }
 }
