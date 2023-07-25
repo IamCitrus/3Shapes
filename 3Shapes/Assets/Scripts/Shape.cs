@@ -9,8 +9,9 @@ using TMPro;
 public class Shape : MonoBehaviour
 {
     public TextMeshProUGUI shapeText;
-    [SerializeField] protected bool isTriggered = false;
-    
+    public bool isTriggered { get; set; } // ENCAPSULATION
+
+
     private void OnMouseDown()
     {
         isTriggered = true;

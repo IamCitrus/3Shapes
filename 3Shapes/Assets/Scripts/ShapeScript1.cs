@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShapeScript1 : Shape
+public class ShapeScript1 : Shape //INHERITANCE
 {
-    protected override void DisplayText()
+    protected override void DisplayText() // POLYMORPHISM
     {
         base.DisplayText();
         if (isTriggered)
@@ -17,7 +17,7 @@ public class ShapeScript1 : Shape
 
     private void Update()
     {
-        DisplayText();
+        DisplayText(); // ABSTRACTION
     }
 
     IEnumerator Timer()
